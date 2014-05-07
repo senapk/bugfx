@@ -2,7 +2,7 @@
 
 Escritor::Escritor()
 {
-    f.loadFromFile("../TesteBuggFX/Fontes/Ubuntu-C.ttf");
+    f.loadFromFile("/usr/local/share/fonts/UbuntuMono-R.ttf");
     size = 10;
     color = Color::White;
 }
