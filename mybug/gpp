@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ -Wall "$@"  -lbug -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+g++ -Wall "$@"  -lbug -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -std=c++11
