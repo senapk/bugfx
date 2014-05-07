@@ -35,7 +35,7 @@ struct Animacao{
         return (imagens[imagemAtual]);
     }
 
-    void setRotate(int angulo){
+    void rotate(int angulo){
         for(Imagem &im : imagens)
             im.rotate(angulo);
     }

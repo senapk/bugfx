@@ -45,7 +45,7 @@ int main(){
 
         if(t.hasPassed(100)){
             t.update();
-            david.setRotate(posx/10);
+            david.rotate(posx/10);
         }
 
         david.getImage().draw(posx,30);

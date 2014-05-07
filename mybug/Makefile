@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Werror -Wformat=0 -fno-stack-protector
+CFLAGS = -Wall -Werror -Wformat=0 -fno-stack-protector -std=c++11
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 compile:
