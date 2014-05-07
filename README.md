@@ -13,3 +13,9 @@ Para instalar ::
     cd bugfx/mybug
     make compile
     make install
+
+Para testar ::
+    
+    cd bugfx/example
+    gpp nave.cpp -o nave
+    ./nave
