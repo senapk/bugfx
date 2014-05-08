@@ -24,3 +24,15 @@ public:
 };
 
 #endif // ESCRITOR_H
+
+
+
+
+
+
+
+
+
+
+
+

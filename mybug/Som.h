@@ -24,3 +24,10 @@ public:
 };
 
 #endif // SOM_H
+
+
+
+
+
+
+

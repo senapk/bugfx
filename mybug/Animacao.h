@@ -5,7 +5,8 @@
 #include "Imagem.h"
 #include "Util.h"
 
-struct Animacao{
+class Animacao{
+    public:
     vector<Imagem> imagens;
     int numDeImagens;
     int imagemAtual;
