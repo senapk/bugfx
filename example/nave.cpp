@@ -12,37 +12,34 @@ struct Game{
 struct Nave{
     float x, y, vx, vy, direcao, maxAcceleration, initHeading;
 
-    Animacao anime;
-    Nave(int qtd, string path, string ext, float initHeading):
-    anime(qtd, path, ext) {
+    Desenhavel *d;
+    Nave(Desenhavel *d, float initHeading) {
+		this->d = d;
         x = y = 100;
         vx = vy;
         direcao = initHeading;
         this->initHeading = initHeading;
         maxAcceleration = 1.0;
-        for( Imagem &im : anime.imagens){
-            im.setSize(100, 100);
-        }
+        d->setSize(100, 100);
     }
 
     void update(){
         x += vx;
         y += vy;
-        anime.update(100);
     }
     void show(){
-        anime.getImage().draw(x, y);
+        d->draw(x, y);
     }
 
 
     void input(Janela &janela){
         if(janela.keyDown(Keyboard::Left)){
             direcao -= 10;
-            anime.rotate(-10);
+            d->rotate(-10);
         }
         if(janela.keyDown(Keyboard::Right)){
             direcao += 10;
-            anime.rotate(10);
+            d->rotate(10);
         }
         if(janela.keyDown(Keyboard::Up)){
             vx += maxAcceleration * Math::dcos(Math::sf2cart(direcao));
@@ -57,7 +54,9 @@ int main(){
     game.altura = 700;
     Janela janela(game.largura, game.altura,"Voa Passarinho, Voa!!!!");
     Escritor e;
-    Nave nave(24, "imagens/bird-", ".png", 100);
+    Animacao anime(100);
+    anime.addMany("imagens/bird-", ".png", 24);
+    Nave nave(&anime, 100);
     char c;
 
     while(janela.isOpen() && c != 'q'){
