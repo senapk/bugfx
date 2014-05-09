@@ -1,7 +1,8 @@
 #include "Imagem.h"
 
-Imagem::Imagem()
+Imagem::Imagem(const Imagem &im)
 {
+    load(im.path, im.getWidth(), im.getHeight());
 }
 
 Imagem::Imagem(string path, int largura, int altura)
@@ -12,9 +13,9 @@ Imagem::Imagem(string path, int largura, int altura)
 void Imagem::load(string path, int largura, int altura)
 {
     if(!imagem.loadFromFile(path)) {
-        cout << "Imagem " << path << " mão encontrada!" << endl;
+        cout << "Imagem " << path << " nao encontrada!" << endl;
     }
-
+    this->path = path;
     float width = imagem.getSize().x;
     float height = imagem.getSize().y;
 
@@ -60,17 +61,18 @@ void Imagem::zoom(float h, float v) {
     sprite.scale(h, v);
 }
 
-int Imagem::getWidth() {
+int Imagem::getWidth() const {
     return sprite.getTextureRect().width;
 }
 
-int Imagem::getHeight() {
+int Imagem::getHeight() const{
     return sprite.getTextureRect().height;
 }
 
 bool Imagem::intersects(Imagem im) {
     return sprite.getGlobalBounds().intersects(im.getRect());
 }
+
 FloatRect Imagem::getRect() {
     return sprite.getGlobalBounds();
 }

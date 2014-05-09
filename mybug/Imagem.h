@@ -9,14 +9,23 @@
 using namespace std;
 using namespace sf;
 
-class Imagem
-{
+class Desenhavel{
+    public:
+    virtual void draw(int, int) = 0;
+    virtual void setSize(int x, int y) = 0;
+    virtual void rotate(int angle) = 0;
+};
+
+
+class Imagem : public Desenhavel{
 public:
     Image imagem;
     Texture textura;
     Sprite sprite;
+    string path;
 
     Imagem();
+    Imagem(const Imagem &im);
     Imagem(string path, int largura = 0, int altura = 0);
     void load(string path, int largura = 0, int altura = 0);
     void draw(int, int);
@@ -29,8 +38,8 @@ public:
     FloatRect getRect();
     Image getImage();
 
-    int getWidth();
-    int getHeight();
+    int getWidth() const;
+    int getHeight() const;
 };
 
 #endif // IMAGEM_H

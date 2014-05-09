@@ -5,35 +5,22 @@ struct Game{
     int altura;
 };
 
-struct Heroi{
-    Imagem imagem;
-    Imagem inverted;
-    int flipped;
-    void loadImagem(string path){
-        imagem.load(path);
-    }
-    void loadInverted(string path){
-        inverted.load(path);
-    }
-    Imagem getImage(){
-        if (flipped)
-            return inverted;
-        return imagem;
-    }
-    void flipX(){
-        flipped = ~flipped;
-    }
-};
-
-int main(){
+int main(int argc, char ** argv){
     Game game;
     game.largura = 1000;
     game.altura = 700;
     Janela janela(game.largura, game.altura,"Digite ou morra!");
     char c;
     Escritor e;
-    Animacao david(7, "../mybug/imagens/dir", ".png");
-    Imagem davi("../mybug/imagens/dir0.png");
+    cout << argv[0] << endl;
+    Animacao dav(200);
+    dav.addImage("../mybug/imagens/dir0.png");
+    dav.addImage("../mybug/imagens/dir1.png");
+    dav.addImage("../mybug/imagens/dir2.png");
+    dav.addImage("../mybug/imagens/dir3.png");
+    dav.addImage("../mybug/imagens/dir4.png");
+    dav.setTimer(300);
+    //Imagem dav("../mybug/imagens/dir0.png");
 
 
     Timer t;
@@ -42,14 +29,7 @@ int main(){
         posx += 10;
         janela.clear();
 
-
-        if(t.hasPassed(100)){
-            t.update();
-            david.rotate(posx/10);
-        }
-
-        david.getImage().draw(posx,30);
-        david.update(300);
+        dav.draw(posx,30);
 
         e.write(0, 0, "Digite q para sair");
 
